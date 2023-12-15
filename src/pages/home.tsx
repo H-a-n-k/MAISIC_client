@@ -1,11 +1,12 @@
-import ArtistCard from "../components/home/artist-card";
-import CateCard from "../components/home/cate-card";
+import ArtistCard from "../components/share/artist-card";
+import CateCard from "../components/share/cate-card";
 import Section from "../components/home/section"
-import SongCard from "../components/home/song-card";
+import SongCard from "../components/share/song-card";
 import Artist from "../types/artist";
 import Category from "../types/category";
 import Song from "../types/song";
 import useFetch from "../utils/useFetch";
+import { OrderSong } from "../types/song-order";
 
 const HomePage = () => { 
 
@@ -34,10 +35,10 @@ const HomePage = () => {
             </div>
         </div>
 
-        {recentSong && <Section title="Bài hát gần đây" items={recentSong} link="#" Item={SongCard} />}
-        {trendSong && <Section title="Bài hát phổ biến" items={trendSong} link="#" Item={SongCard} />}
-        {artists && <Section title="Theo dõi nghệ sĩ" items={artists} link="#" Item={ArtistCard} />}
-        {cates && <Section title="Khám phá các thể loại" items={cates} link="#" Item={CateCard} />}
+        {recentSong && <Section title="Bài hát gần đây" items={recentSong} link="/search" Item={SongCard} />}
+        {trendSong && <Section title="Bài hát phổ biến" items={trendSong} link="/search" linkData={{ pOrder: OrderSong.View }} Item={SongCard} />}
+        {artists && <Section title="Theo dõi nghệ sĩ" items={artists} link="/artist" Item={ArtistCard} />}
+        {cates && <Section title="Khám phá các thể loại" items={cates} link="/category" Item={CateCard} />}
     </div>
 }
 

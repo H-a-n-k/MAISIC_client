@@ -1,18 +1,21 @@
-import React, { createContext, useContext} from "react";
+import React, { createContext, useContext, useState} from "react";
 
 interface Props {
     children: React.ReactNode
 }
 
 export interface GlobalContextValue {
-    title?: string
+    keyword?: string
+    setKeyword?: React.Dispatch<React.SetStateAction<string>>
 }
 
-const GlobalContext = createContext<GlobalContextValue>({ })
+const GlobalContext = createContext<GlobalContextValue>({})
 
 export default function GlobalContextProvider({ children }: Props) {
 
-    return <GlobalContext.Provider value={{title: 'appp'}}>
+    const [keyword, setKeyword] = useState('');
+
+    return <GlobalContext.Provider value={{keyword, setKeyword}}>
         {children}
     </GlobalContext.Provider>
 }

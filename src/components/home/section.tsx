@@ -1,15 +1,15 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom";
-import SongCard from "./song-card";
 
 interface Props { 
-    title: string,
-    items: any[],
-    link?: string,
+    title: string
+    items: any[]
+    link?: string
+    linkData?: any
     Item: (p: any) => JSX.Element
 }
 
-const Section = ({ title, items, link, Item }: Props) => { 
+const Section = ({ title, items, link, Item, linkData }: Props) => { 
 
     const [index, setIndex] = useState(0);
     const n = 6;
@@ -45,7 +45,7 @@ const Section = ({ title, items, link, Item }: Props) => {
                     }
                     {
                         link && <div className='all'>
-                            <Link to='#'>Xem tất cả</Link>
+                            <Link to={link} state={linkData}>Xem tất cả</Link>
                         </div>
                     }
                 </div>
@@ -53,7 +53,7 @@ const Section = ({ title, items, link, Item }: Props) => {
             <div className="list" style={{width}}>
                 <div className="slider" style={SliderStype}>
                     {
-                        items && items.map((x, ind) => <div key={ind} className="item" style={{ width: 'var(--item-width)' }}>
+                        items && items.map((x, ind) => <div key={ind} className="card-item" style={{ width: 'var(--item-width)' }}>
                             <Item {...x} />
                         </div>)
                     }

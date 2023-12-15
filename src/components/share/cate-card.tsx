@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 import Category from "../../types/category"
 import random from "../../utils/random"
-import { useCallback, useMemo } from "react"
+import { useMemo } from "react"
 
 function getColor() {
     return `rgb(${random(112, 247)}, ${random(124, 244)}, ${random(124, 215)})`;
 }
 
-const CateCard = ({ TenTheLoai }: Category) => { 
+const CateCard = (cate: Category) => { 
 
     const RandomBoxStyle = useMemo(() => {
         var color1 = getColor();
@@ -21,9 +21,9 @@ const CateCard = ({ TenTheLoai }: Category) => {
         } as React.CSSProperties
     }, [])
 
-    return <Link to='#' className="cate">
+    return <Link to='/search' state={{ title: 'Nhạc ' + cate.TenTheLoai, cate}} className="cate-card">
         <div className="box" style={RandomBoxStyle}>
-            <div className="name">{TenTheLoai}</div>
+            <div className="name">{cate.TenTheLoai}</div>
         </div>
     </Link>
 }

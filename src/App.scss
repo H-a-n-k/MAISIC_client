@@ -99,6 +99,26 @@ a{
       }
     }
 
+    .middle{
+      .search{
+        input{
+          padding: 5px 20px;
+          width: 300px;
+          color: white;
+          background-color: grey;
+          font-size: 1.2rem;
+          border-radius: 500px;
+
+          &:focus{
+            outline: none;
+          }
+          &::placeholder{
+            color: white;
+          }
+        }
+      }
+    }
+
     .right{
 
       .account{
@@ -220,7 +240,6 @@ a{
 
 //pages===============================
 
-
 .home-page{
   padding-bottom: 50px;
 
@@ -236,7 +255,7 @@ a{
     .screen{
       @extend .abs-fill;
 
-      background-color: rgba($color: black, $alpha: 0.66);
+      background-color: rgba($color: black, $alpha: 0.5);
     }
 
     .text{
@@ -291,93 +310,93 @@ a{
         white-space: nowrap;
         transition: transform .5s ease-in-out;
 
-        .item{
-          display: inline-block;
-          padding: 0 15px;
-          white-space: normal;
-          
-          .song{
-            .content {
-              background-color: grey;
-              padding: 20px;
-              border-radius: 20px;
-          
-              img {
-                width: 100%;
-                aspect-ratio: 1/1;
-                border-radius: 10px;
-              }
-          
-              .name {
-                color: white;
-                font-size: 1.2rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
-          
-              .desc {
-                color: rgb(189, 186, 186)
-              }
-            }
-          }
-
-          .cate{
-            --color-1: rgb(34, 193, 195);
-            --color-2: rgb(253, 187, 45);
-            --deg: 90deg;
-
-            .box{
-              @extend .flex-center;
-
-              background: rgb(34, 193, 195);
-              background: linear-gradient(var(--deg), var(--color-1) 0%, var(--color-2) 100%);
-              aspect-ratio: 1/1;
-              border-radius: 50px;
-
-              .name{
-                font-size: 1.5rem;
-                color: white;
-                padding: 10px 20px;
-                border-radius: 100px;
-
-                //background-color: rgba($color: black, $alpha: .3);
-              }
-            }
-
-          }
-
-          .artist{
-
-            .box{
-              padding: 20px;
-              border-radius: 20px;  
-              box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2) inset;
-
-              .img {
-                  margin: 0 auto 20px;
-                  aspect-ratio: 1/1;
-                  border-radius: 50%;
-                  background-color: grey;
-                  background-position: center;
-              
-                  background-size: cover;
-                }
-              
-                .name {
-                  text-align: center;
-                  font-size: 1.2rem;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                }
-            }
-          }
-
-        }
       }
     }
   }
+}
+.card-item {
+  display: inline-block;
+  padding: 0 15px;
+  white-space: normal;
+
+  .song-card {
+    .content {
+      background-color: grey;
+      padding: 20px;
+      border-radius: 20px;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 10px;
+      }
+
+      .name {
+        color: white;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .desc {
+        color: rgb(189, 186, 186)
+      }
+    }
+  }
+
+  .cate-card {
+    --color-1: rgb(34, 193, 195);
+    --color-2: rgb(253, 187, 45);
+    --deg: 90deg;
+
+    .box {
+      @extend .flex-center;
+
+      background: rgb(34, 193, 195);
+      background: linear-gradient(var(--deg), var(--color-1) 0%, var(--color-2) 100%);
+      aspect-ratio: 1/1;
+      border-radius: 50px;
+
+      .name {
+        font-size: 1.5rem;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 100px;
+
+        //background-color: rgba($color: black, $alpha: .3);
+      }
+    }
+
+  }
+
+  .artist-card {
+
+    .box {
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2) inset;
+
+      .img {
+        margin: 0 auto 20px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: grey;
+        background-position: center;
+
+        background-size: cover;
+      }
+
+      .name {
+        text-align: center;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
 }
 
 .detail-page{
@@ -527,5 +546,165 @@ a{
     &.active {
       color: green;
     }
+  }
+}
+
+.search-page{
+  padding: 50px;
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+
+    .left{
+      .title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    .right{
+      .sort{
+        font-size: 1.5rem;
+
+        select{
+          margin-left: 20px;
+          padding: 5px 10px;
+          font-size: .8em;
+
+          option{
+            font-size: 1rem;
+            padding-bottom: 5px;
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+    }
+  }
+
+  .song-list{
+    display: flex;
+    flex-wrap: wrap;
+
+    .card-item{
+      width: calc(100%/6);
+      margin-bottom: 20px;
+      
+    }
+  }
+
+  .pager{
+    display: flex;
+    float: right;
+
+    .btn{
+      cursor: pointer;
+      &:hover{
+        color: blue;
+      }
+    }
+
+    >*{
+      margin: 0 5px;
+    }
+  }
+}
+
+.cate-page{
+  padding: 50px;
+
+  .title{
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+
+    .card-item{
+      flex-basis: calc(100% / 6);
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.artist-page {
+  padding: 50px;
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .card-item {
+      flex-basis: calc(100% / 6);
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.cate-info{
+  padding: 40px;
+  margin-bottom: 20px;
+  color: white;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(300deg, rgba(236, 133, 156, 1) 0%, rgba(170, 155, 171, 1) 100%);
+  border-radius: 20px;
+
+  .title{
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+}
+
+.artist-info{
+  .content{
+    @extend .flex-center;
+    display: flex;
+    align-items: flex-start;
+
+    padding: 40px;
+    margin-bottom: 40px;
+
+    background: rgb(34, 193, 195);
+    background: linear-gradient(18deg, rgba(136, 137, 185, 1) 0%, rgba(123, 235, 125, 1) 100%);
+    color: white;
+    border-radius: 40px;
+
+    >*{
+      margin-right: 40px;
+    }
+
+    .left{
+      .img {
+        height: 200px;
+        width: 200px;
+        border-radius: 40px;
+        overflow: hidden;
+    
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .middle{
+
+      .name{
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .right{
+    flex: 1;
+    padding-right: 40px;
   }
 }

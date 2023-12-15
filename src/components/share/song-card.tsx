@@ -3,7 +3,7 @@ import Song from "../../types/song"
 
 const SongCard = ({ ID, TenBH, HoTen, AnhBia } : Song) => { 
 
-    return <Link to={'/detail/' + ID} className="song">
+    return <Link to={'/detail/' + ID} className="song-card">
         <div className="content">
             <img src={`http://localhost:5000/api/file/get/${AnhBia}`} alt="" />
             <div className="name">{TenBH}</div>
